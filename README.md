@@ -1,4 +1,3 @@
-# printf function
+# Creating printf function from scratch
 
-* yay
-*cool
+* We must first deal with the variable arguments we want it to take
