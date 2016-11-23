@@ -3,10 +3,11 @@
 
 typedef struct Cspecs {
 	char cs;
-	void (*f)(va_list);
+	void (*f)(va_list a);
 } cs_t;
 
-int _putchar(char c);
+void _putchar(va_list a);
+void print_str(va_list a);
 int _printf(const char *format, ...);
 
 #endif

@@ -3,9 +3,23 @@
 #include <unistd.h>
 #include "holberton.h"
 
-int _putchar(char c)
+void _putchar(va_list a)
 {
-	return (write(1, &c, 1));
+	char c;
+
+	c = va_arg(a, int);
+	write(1, &c, 1);
+}
+
+void print_str(va_list a)
+{
+	char *c;
+
+	c = va_arg(a, char *);
+	while (*c != '\0')
+	{
+		putchar(*c);
+	}
 }
 
 
@@ -20,8 +34,9 @@ int _printf(const char *format, ...)
 	va_list a;
 	int i, j, n;
 
-	cs_t cspec[1] = {
+	cs_t cspec[] = {
 		{'c', _putchar},
+		{'s', print_str}
 	};
 
 	if (format == NULL)
