@@ -4,12 +4,11 @@ _printf
 .SH SYNOPSIS
 Simplified version of printf
 .SH DESCRIPTION
-_printf is afunction which produces output according to input or format. It takes into account several specifiers: "c", "s", "%", "d" and "i". However, _printf does not reproduce the buffer handling of the C library  printf function.
+_printf is a function which produces output according to input or format. It cheks for formatters such as: "c", "s", "%", "d" and "i" and primitive types.
 .SH OPTIONS
-No options. It does not handle the flag characters, the field width, precision or the length modifiers.
+No options. Flags and options are not needed
 .SH BUGS
-(Tests run under Vagrant, Ubuntu 14.04) Hopefully, none. Actually, does not handle several "%" signs or if "%" does not follow an identifier, such as "c", "s", "d", or "i" for example, "%" will not print when it is supposed to such as in "%z;1234\n" which prints ";1234\n", while the correct output should be "%;1234".
-.B You can also check betty for more info about the tests
+.B Check out Betty for more info on this:
 https://github.com/holbertonschool/Betty/blob/master/betty-style.pl and https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl.
 .SH AUTHOR
 Kalson Kalu, Matthew Plemmons
