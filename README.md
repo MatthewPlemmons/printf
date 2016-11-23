@@ -1,1 +1,4 @@
-### 0x10: C - printf
+# printf function
+
+* yay
+*cool
