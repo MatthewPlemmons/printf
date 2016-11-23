@@ -24,15 +24,15 @@ void print_str(va_list a)
 	c = va_arg(a, char *);
 	while (*c != '\0')
 	{
-		putchar(*c);
+		_putchar_c(*c++);
 	}
 }
 
 
 /**
- *
- *
- *
+ * _printf - prints output according to a format.
+ * @format: input string.
+ * Return: int, number of characters printed,
  */
 
 int _printf(const char *format, ...)
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 
 	cs_t cspec[] = {
 		{'c', _putchar},
-		{'s', print_str}
+		{'s', print_str},
 	};
 
 	if (format == NULL)
@@ -55,9 +55,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			j = 0;
-			while (j < 1)
+			while (j < 2)
 			{
-				if (format[i + 1] == cspec[j].cs)
+				if (format[i + 1] == cspec[j].cs &&
+				    format[i + 1] != '%')
 				{
 					cspec[j].f(a);
 					i++;
