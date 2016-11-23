@@ -1,4 +1,3 @@
 # printf function
 
-* yay
-*cool
+* new test
