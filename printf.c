@@ -28,6 +28,11 @@ void print_str(va_list a)
 	}
 }
 
+void print_int()
+{
+	
+}
+
 
 /**
  * _printf - prints output according to a format.
@@ -43,6 +48,8 @@ int _printf(const char *format, ...)
 	cs_t cspec[] = {
 		{'c', _putchar},
 		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int}
 	};
 
 	if (format == NULL)
@@ -55,7 +62,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			j = 0;
-			while (j < 2)
+			while (j < 4)
 			{
 				if (format[i + 1] == cspec[j].cs &&
 				    format[i + 1] != '%')
