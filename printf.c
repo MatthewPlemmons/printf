@@ -4,6 +4,11 @@
 #include <unistd.h>
 #include "holberton.h"
 
+void _putchar_c(char c)
+{
+	write(1, &c, 1);
+}
+
 void _putchar(va_list a)
 {
 	char c;
@@ -55,15 +60,18 @@ int _printf(const char *format, ...)
 				if (format[i + 1] == cspec[j].cs)
 				{
 					cspec[j].f(a);
+					i++;
 				}
 				j++;
 			}
+			i++;
+			_putchar_c(format[i]);
 		}
 		else
-			putchar(format[i]);
+			_putchar_c(format[i]);
 		count++;
 		i++;
 
 	}
-	return (0);
+	return (count);
 }
