@@ -1,3 +1,3 @@
-# printf function
+# Creating printf function from scratch
 
-* new test
+* We must first deal with the variable arguments we want it to take
