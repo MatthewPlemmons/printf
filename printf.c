@@ -1,10 +1,16 @@
-#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include "holberton.h"
 
-int check_conv_specifier(char c, va_list a)
+/**
+ * print_va_args - matches the conversion specifier to the correct
+ * fucntion for printing the variable argument.
+ * @c: conversion specifier.
+ * @a: variable argument list.
+ * Return: int, number of characters printed.
+ */
+
+int print_va_args(char c, va_list a)
 {
 	int i;
 
@@ -18,9 +24,7 @@ int check_conv_specifier(char c, va_list a)
 	for (i = 0; i < 4; i++)
 	{
 		if (cspec[i].cs == c)
-		{
 			return (cspec[i].f(a));
-		}
 	}
 	return (_putchar_c(c));
 }
@@ -29,7 +33,7 @@ int check_conv_specifier(char c, va_list a)
 /**
  * _printf - prints output according to a format.
  * @format: input string.
- * Return: int, number of characters printed,
+ * Return: int, number of characters printed.
  */
 
 int _printf(const char *format, ...)
@@ -46,7 +50,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += check_conv_specifier(format[i + 1], a);
+			count += print_va_args(format[i + 1], a);
 			i++;
 		}
 		else
