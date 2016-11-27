@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "holberton.h"
-#include "print_functions.c"
 
 /**
  * _printf - prints output according to a format.
