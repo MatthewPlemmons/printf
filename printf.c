@@ -3,36 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "holberton.h"
-
-void _putchar_c(char c)
-{
-	write(1, &c, 1);
-}
-
-void _putchar(va_list a)
-{
-	char c;
-
-	c = va_arg(a, int);
-	write(1, &c, 1);
-}
-
-void print_str(va_list a)
-{
-	char *c;
-
-	c = va_arg(a, char *);
-	while (*c != '\0')
-	{
-		_putchar_c(*c++);
-	}
-}
-
-void print_int()
-{
-	
-}
-
+#include "print_functions.c"
 
 /**
  * _printf - prints output according to a format.
