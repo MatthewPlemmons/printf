@@ -9,6 +9,8 @@ typedef struct Cspecs {
 void _putchar_c(char c);
 void _putchar(va_list a);
 void print_str(va_list a);
+void print_uint(unsigned int i);
+void print_int(va_list a);
 int _printf(const char *format, ...);
 
 #endif
