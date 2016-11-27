@@ -3,75 +3,96 @@
 #include "holberton.h"
 
 /**
- * _putchar_c - prints a character, char input.
+ * _putchar_c - prints a character.
  * @c: character input.
- * Return: void
+ * Return: int, bytes written.
  */
 
-void _putchar_c(char c)
+int _putchar_c(char c)
 {
         write(1, &c, 1);
+	return (1);
 }
 
 /**
- * _putchar - prints a character, va_list input.
+ * _putchar - prints a character.
  * @a: va_list input.
- * Return: void
+ * Return: int, bytes written.
  */
 
-void _putchar(va_list a)
+int _putchar(va_list a)
 {
-        char c;
+	char c;
 
-        c = va_arg(a, int);
+	c = va_arg(a, int);
         write(1, &c, 1);
+	return (1);
 }
 
 /**
- * print_str - prints string.
+ * print_str - prints a string.
  * @a: input string.
- * Return: void
+ * Return: int, bytes written.
  */
 
-void print_str(va_list a)
+int print_str(va_list a)
 {
-        char *c;
+	int n;
+	char *s;
 
-        c = va_arg(a, char *);
-        while (*c != '\0')
+	s = va_arg(a, char *);
+	n = 0;
+        while (*s != '\0')
         {
-                _putchar_c(*c++);
+                write(1, s, 1);
+		s++;
+		n++;
         }
+	return (n);
 }
 
 /**
  * print_unit - prints unsigned int.
  * @n: int input.
- * Return: void
+ * Return: int, bytes written.
  */
 
-void print_uint(unsigned int n)
+int print_uint(unsigned int n)
 {
+	static int count;
+	int digit;
+
+	count = 0;
         if (n / 10 != 0)
-                print_uint(n / 10);
-        _putchar_c((n % 10) + '0');
+	{
+		count++;
+		print_uint(n / 10);
+	}
+	digit = ((n % 10) + '0');
+        write(1, &digit, 1);
+	return (count);
 }
 
 /**
  * print_int - prints int.
  * @a: input.
- * Return: void
+ * Return: int, bytes written.
  */
 
-void print_int(va_list a)
+int print_int(va_list a)
 {
-        int n;
+	char sign;
+	int n, count;
 
-        n = va_arg(a, int);
+	n = va_arg(a, int);
+	count = 0;
+	sign = '-';
         if (n < 0)
         {
-                _putchar_c('-');
+                write(1, &sign, 1);
                 n = -n;
+		count++;
         }
-        print_uint((unsigned int) n);
+        count += print_uint((unsigned int) n);
+	return (count);
 }
