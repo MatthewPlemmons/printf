@@ -4,6 +4,28 @@
 #include <unistd.h>
 #include "holberton.h"
 
+int check_conv_specifier(char c, va_list a)
+{
+	int i;
+
+	cs_t cspec[] = {
+		{'c', _putchar},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+	};
+
+	for (i = 0; i < 4; i++)
+	{
+		if (cspec[i].cs == c)
+		{
+			return (cspec[i].f(a));
+		}
+	}
+	return (_putchar_c(c));
+}
+
+
 /**
  * _printf - prints output according to a format.
  * @format: input string.
@@ -13,43 +35,23 @@
 int _printf(const char *format, ...)
 {
 	va_list a;
-	int i, j, count;
-
-	cs_t cspec[] = {
-		{'c', _putchar},
-		{'s', print_str},
-		{'d', print_int},
-		{'i', print_int}
-	};
+	int i, count;
 
 	if (format == NULL)
 		return (0);
 
-	i = j = count = 0;
+	count = 0;
 	va_start(a, format);
-	while (format[i])
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
-			j = 0;
-			while (j < 4)
-			{
-				if (format[i + 1] == cspec[j].cs &&
-				    format[i + 1] != '%')
-				{
-					cspec[j].f(a);
-					i++;
-				}
-				j++;
-			}
+			count += check_conv_specifier(format[i + 1], a);
 			i++;
-			_putchar_c(format[i]);
 		}
 		else
-			_putchar_c(format[i]);
-		count++;
-		i++;
-
+			count += _putchar_c(format[i]);
 	}
+	va_end(a);
 	return (count);
 }
