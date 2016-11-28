@@ -1,7 +1,14 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
 
-typedef struct Cspecs {
+/**
+ * struct Cspecs - conversion specifier struct.
+ * @cs: char identifying the specifier.
+ * @f: pointer to a function.
+ */
+
+typedef struct Cspecs
+{
 	char cs;
 	int (*f)();
 } cs_t;
